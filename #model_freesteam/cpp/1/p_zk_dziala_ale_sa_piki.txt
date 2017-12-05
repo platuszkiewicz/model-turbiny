@@ -1,0 +1,36 @@
+         //************** ciœienie za czêœciowo otwartym zaworem p_zk ************//
+       double p_zk=0;
+       double g=m_zk/m_zhk; cout << " g " << g << endl;
+       double A,B;
+       
+       if(eps_h>beta_dz){
+           A=pow(p_r[i],2)*(  pow(1-beta_dz,2)  -  pow(eps_h-beta_dz,2));
+           B=pow(  pow(1-beta_dz,2) - pow(eps_h-beta_dz,2) , 0.5 )/(1-beta_dz);        
+          
+                      cout << "eps_h/(beta_dz*B) " << eps_h/(beta_dz*B) << endl;    
+                      if(g<=(eps_h/(beta_dz*B))){
+                          // p_zk=p_r[i]/(1-beta_dz)*(-beta_dz+(1-beta_dz)*pow(1+(1-2*beta_dz)*(1/pow(p_r[i]/p_r[0]*g*p_zh[0],2)),0.5));
+                          // p_zk=(-beta_dz*p_r[i]+pow(pow(p_r[i],2)*pow(1-beta_dz,2)+(1-2*beta_dz)*pow(g,2)*A,0.5))/(1-2*beta_dz);
+                           p_zk=p_r[i]*(-beta_dz+(1-beta_dz)*pow(1+(1-2*beta_dz)*pow(g*p_zh[i]/p_r[i],2),0.5))/(1-2*beta_dz);
+                           cout << " p_r " << p_r[i] << endl << "beta_dz " << beta_dz << endl << "p_zh " << p_zh[i] << endl;
+                           
+                           
+                           cout << "p_zk " << p_zk << endl << endl;
+                           cout<<"#1"<<endl;opcja[i]=1;}
+                      else{
+                           p_zk=g*p_zh[i]*B;cout<<"#2 "<< endl << "g " << g << endl << "p_r " << p_r[i] << endl << "B " << B << endl << "p_zk " << p_zk << endl << endl ;opcja[i]=2;}                                                          
+          }
+       else{
+           A=(pow(p_r[i],2))*(1-beta_dz);
+           B=1;    
+                      cout << "eps_h/(beta_dz*B) " << eps_h/(beta_dz*B) << endl;     
+                      if(g<=eps_h/(beta_dz*B)){
+                            //p_zk=p_r[i]/(1-beta_dz)*(-beta_dz+(1-beta_dz)*pow(1+(1-2*beta_dz)*(1/pow(p_r[i]/p_r[0]*g*p_zh[0],2)),0.5));
+                           // p_zk=(-beta_dz*p_r[i]+pow(pow(p_r[i],2)*pow(1-beta_dz,2)+(1-2*beta_dz)*pow(g,2)*A,0.5))/(1-2*beta_dz);
+                            p_zk=p_r[i]*(-beta_dz+(1-beta_dz)*pow(1+(1-2*beta_dz)*pow(g*p_zh[i]/p_r[i],2),0.5))/(1-2*beta_dz);
+                           cout<<"#3"<<endl;opcja[i]=3;}
+                      else{
+                           p_zk=g*p_zh[i]*B;cout<<"#4 "<< endl << "g " << g << endl << "p_r " << p_r[i] << endl << "B " << B << endl << "p_zk " << p_zk << endl << endl;opcja[i]=4;}     
+            }
+          cout << " A " << A << endl;
+          cout << " B " << B << endl;

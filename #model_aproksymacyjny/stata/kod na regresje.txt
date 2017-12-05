@@ -1,0 +1,3 @@
+regress Pel c.m0#c.H_WP H_WP c.m0#c.H_SPNP H_SPNP
+regress Pel m0 p0 T0 Tp pk
+regress Pel c.m0#c.H_WP H_WP c.m0#c.H_SPNP H_SPNP, noconstant
